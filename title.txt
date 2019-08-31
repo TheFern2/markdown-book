@@ -1,0 +1,6 @@
+---
+title: Book Example
+author: Fernando B.
+rights: Nah
+language: en-US
+---
