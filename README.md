@@ -40,12 +40,23 @@ This is a lot of experimentation, I had to switch to xelatex engine. When the py
 
 ## Exporting to PDF
 
+> NB: The script relies on the numbering of the folders, and markdown files. Ensure you add a sequential numbers to chapter folders, and md files within the chapters. If you don't have chapter folders, then ensure your md files have sequential numbers. Folders and md files can be named anything.
+
 I structured my chapters in directories, like shown below:
 
 ```
 ├───title.txt
 ├───Chapter1
 ├───Chapter2
+└───images
+```
+
+> New addition to the `export_book.py` script, now it supports md files without chapter directories:
+
+```
+├───title.txt
+├───Chapter1.md
+├───Chapter2.md
 └───images
 ```
 
