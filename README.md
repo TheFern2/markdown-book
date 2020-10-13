@@ -12,6 +12,32 @@ The markdown editor that you use makes no difference, I use [Typora](https://www
 
 In addition to that, I use [Pandoc](https://pandoc.org/), you'll need LaTeX to print PDFs, make sure to follow the [instructions](https://pandoc.org/installing.html).
 
+## Debian (Ubuntu)
+
+Extra info:
+https://linuxconfig.org/how-to-install-latex-on-ubuntu-20-04-focal-fossa-linux
+
+```
+sudo apt install pandoc
+```
+
+If you prefer latest binary then head over to releases:
+https://github.com/jgm/pandoc/releases/
+
+To export to pdf you need pdflatex which is in the below package:
+
+```
+sudo apt install texlive-latex-base
+```
+
+Follow this gists for full installation + fonts:
+https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d
+
+For Latex, I am using MiKTeX:
+https://miktex.org/download
+
+This is a lot of experimentation, I had to switch to xelatex engine. When the python script is ran, you'll get a popup for MiKTeX as is trying to install required packages, and there are a lot. I recomment unchecking the checkbox, or it wil be a tons of clicking to accept hundreds of small packages.
+
 ## Exporting to PDF
 
 I structured my chapters in directories, like shown below:

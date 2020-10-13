@@ -21,12 +21,12 @@ def export_dir_to_format(path):
     pass
 
 
-file_list = get_list_of_files('.', 'md')
+file_list = get_list_of_files('./book', 'md')
 
 for file in file_list:
     print(file)
 
-default_pandoc_cmd = 'pandoc --toc -o book.pdf title.txt '
+default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o book.pdf title.txt '
 files_string = " ".join(file_list)
 
 run_cmd(default_pandoc_cmd + files_string)
