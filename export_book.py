@@ -94,25 +94,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# book 1 Chapters and Scenes
-# file_list = get_list_of_files('./book', 'md', True)
-
-# for file in file_list:
-#     print(file)
-
-# default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o book.pdf title.txt '
-# files_string = " ".join(file_list)
-
-# run_cmd(default_pandoc_cmd + files_string)
-
-# # book 2 Only md files, can be named anything just have a number in it for sorting
-# file_list = get_list_of_files('./book_2', 'md')
-
-# for file in file_list:
-#     print(file)
-
-# default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o book2.pdf title.txt '
-# files_string = " ".join(file_list)
-
-# run_cmd(default_pandoc_cmd + files_string)
