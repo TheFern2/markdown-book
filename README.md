@@ -89,7 +89,13 @@ pandoc --toc -o book.pdf title.txt .\book\Chapter1\Scene1.md .\book\Chapter1\Sce
 
 ## Going beyond the command line
 
-As you can imagine as your book grows, things will get harder to compile. I couldn't find a library or an easy parameter that takes a list of md files in a directory so I wrote a python script [export_book.py](https://github.com/kodaman2/markdown-book/blob/master/export_book.py). 
+As you can imagine as your book grows, things will get harder to compile. I couldn't find a library or an easy parameter that takes a list of md files in a directory so I wrote a python script [export_book.py](https://github.com/kodaman2/markdown-book/blob/master/export_book.py).
+
+> NB: Before you try `export_book.py` there's a simple command you can use, if you have a single directory with markdown files, the caveat is that all files need to be in a single directory. Chances are if you're writing a book, you're using multiple directories structure:
+
+```
+pandoc --toc ./book/*.md -o book.pdf
+```
 
 The script supports a few arguments:
 ```
