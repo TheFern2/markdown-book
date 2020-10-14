@@ -45,19 +45,27 @@ This is a lot of experimentation, I had to switch to xelatex engine. When the py
 I structured my chapters in directories, like shown below:
 
 ```
-├───title.txt
-├───Chapter1
-├───Chapter2
-└───images
+├── book
+│   ├── Chapter1
+│   │   ├── Scene1.md
+│   │   └── Scene2.md
+│   └── Chapter2
+│       └── Scene1.md
+├── images
+│   └── lostbook.jpg
+└── title.txt
 ```
 
 > New addition to the `export_book.py` script, now it supports md files without chapter directories:
 
 ```
-├───title.txt
-├───Chapter1.md
-├───Chapter2.md
-└───images
+├── book_2
+│   ├── Scene1.md
+│   ├── Scene2.md
+│   └── Scene3.md
+├── images
+│   └── lostbook.jpg
+└── title.txt
 ```
 
 The title is like a header for pandoc:
@@ -76,14 +84,32 @@ language: en-US
 
 The below command will add table of contents, output to book.pdf, get title info from title.txt and grab three markdown files.
 ```
-pandoc --toc -o book.pdf title.txt .\Chapter1\Scene1.md .\Chapter1\Scene2.md .\Chapter2\Scene1.md
+pandoc --toc -o book.pdf title.txt .\book\Chapter1\Scene1.md .\book\Chapter1\Scene2.md .\book\Chapter2\Scene1.md
 ```
 
 ## Going beyond the command line
 
-As you can imagine as your book grows, things will get harder to compile. I couldn't find a library or an easy parameter that takes a list of md files in a directory so I wrote a python script [export_book.py](https://github.com/kodaman2/markdown-book/blob/master/export_book.py). For now the script needs to be in the book root directory, but in the future I will probably expand on it.
+As you can imagine as your book grows, things will get harder to compile. I couldn't find a library or an easy parameter that takes a list of md files in a directory so I wrote a python script [export_book.py](https://github.com/kodaman2/markdown-book/blob/master/export_book.py). 
 
-[Full Repo](https://github.com/kodaman2/markdown-book)
+The script supports a few arguments:
+```
+usage: export_book.py [-h] -p ROOT_PATH [-c] [-f FILE_EXTENSION]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p ROOT_PATH, --root-path ROOT_PATH
+                        Root path for book files
+  -c, --using-chapter-folders
+                        Are you using folders for chapters?
+  -f FILE_EXTENSION, --file-extension FILE_EXTENSION
+
+Examples:
+
+python3 export_book.py -p /path/to/book
+python3 export_book.py -p /path/to/book -c
+python3 export_book.py -p /path/to/book -f rst
+```
+> NB: Other file extensions other than md, markdown, have not been tested proceed with caution. If it works let me know.
 
 ## Other items to think about
 I need to experiment with css for formatting the book a bit better and adding header and footer, and so on, but this is a good start for anyone trying to accomplish the same or even writing academic papers as pandoc can output to different formats.

@@ -66,24 +66,53 @@ def get_list_of_files(path, extension, chapter_folders=False):
 def export_dir_to_format(path):
     pass
 
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', '--root-path', help='Root path for book files', required=True)
+    parser.add_argument('-c', '--using-chapter-folders', 
+    help='Are you using folders for chapters?', default=False,action='store_true')
+    parser.add_argument('-f', '--file-extension', default='md')
+    args = parser.parse_args()
+
+    file_list = get_list_of_files(args.root_path, args.file_extension, args.using_chapter_folders)
+
+    if not file_list:
+        print("No markdown files found, if you\'re using folder chapters use -c, else do not use -c")
+        print("Exiting...")
+        exit()
+    
+    for file in file_list:
+        print(file)
+
+    if args.root_path[-1] != '/' or args.root_path[-1] != '\\':
+        args.root_path = args.root_path + '/'
+
+    default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o' + args.root_path +'book.pdf title.txt '
+    files_string = " ".join(file_list)
+    run_cmd(default_pandoc_cmd + files_string)
+
+if __name__ == "__main__":
+    main()
+
 # book 1 Chapters and Scenes
-file_list = get_list_of_files('./book', 'md', True)
+# file_list = get_list_of_files('./book', 'md', True)
 
-for file in file_list:
-    print(file)
+# for file in file_list:
+#     print(file)
 
-default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o book.pdf title.txt '
-files_string = " ".join(file_list)
+# default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o book.pdf title.txt '
+# files_string = " ".join(file_list)
 
-run_cmd(default_pandoc_cmd + files_string)
+# run_cmd(default_pandoc_cmd + files_string)
 
-# book 2 Only md files, can be named anything just have a number in it for sorting
-file_list = get_list_of_files('./book_2', 'md')
+# # book 2 Only md files, can be named anything just have a number in it for sorting
+# file_list = get_list_of_files('./book_2', 'md')
 
-for file in file_list:
-    print(file)
+# for file in file_list:
+#     print(file)
 
-default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o book2.pdf title.txt '
-files_string = " ".join(file_list)
+# default_pandoc_cmd = 'pandoc --pdf-engine=xelatex --toc -o book2.pdf title.txt '
+# files_string = " ".join(file_list)
 
-run_cmd(default_pandoc_cmd + files_string)
+# run_cmd(default_pandoc_cmd + files_string)
