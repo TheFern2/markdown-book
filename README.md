@@ -1,3 +1,9 @@
+> NB: I wrote a vscode extension that does the same thing this script does, but a bit more polished.
+
+https://github.com/TheFern2/vscode-gutenberg
+
+https://marketplace.visualstudio.com/items?itemName=TheFern.vscode-gutenberg
+
 # Exporting a markdown book to PDF with Pandoc
 
 I have been wanting to write a book for some time now. I've accumulated lots of experience both in my career as automation and controls engineer, and on my own I have learned tons in software engineering, game dev, etc, the list is huge.
